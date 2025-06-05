@@ -22,7 +22,6 @@ trabajo.
 • Cambiar el tamaño del rectángulo. Recibe como parámetro un factor de escala. Así, por
 ejemplo, si el factor vale 2, el rectángulo duplicará su tamaño y si es 0,5 se reducirá a la
 mitad. Qué pasaría o cómo deberían manejar un factor de escala negativo o cero?
-
  */
 
 public class main {
