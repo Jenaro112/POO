@@ -1,27 +1,24 @@
-/* 
-1. . Defina una clase Figura que tenga los siguientes atributos:
-• Color
-• Coordenada del centro de la forma (Defina una clase Punto con atributos coordenadaX y coordenadaY)
-• Nombre de la forma
-
-Y, al menos, los siguientes métodos:
-• toString. Sobrescribir el método heredado de Object
-• Obtener y cambiar el color
-• Mover la forma (o sea, su centro)
-
-Defina una subclase Rectángulo que herede de Figura y tenga los siguientes atributos:
-• Lado menor.
-• Lado mayor.
-
-Y, al menos, los siguientes métodos:
-• toString. Debe retornar un string mostrando que se trata de un rectángulo, su nombre, color,
-centro y lado. Debería usarse la función toString de la clase base para realizar parte de este
-trabajo.
-• Calcular el área (lado menor * lado mayor).
-• Calcular el perímetro. (2 * lado menor + 2 * lado mayor).
-• Cambiar el tamaño del rectángulo. Recibe como parámetro un factor de escala. Así, por
-ejemplo, si el factor vale 2, el rectángulo duplicará su tamaño y si es 0,5 se reducirá a la
-mitad. Qué pasaría o cómo deberían manejar un factor de escala negativo o cero?
+/*
+* 1. . Defina una clase Figura que tenga los siguientes atributos:
+* - Color
+* - Coordenada del centro de la forma (Defina una clase Punto con atributos coordenadaX y coordenadaY)
+* - Nombre de la forma
+*
+* Y, al menos, los siguientes métodos:
+* - toString. Sobrescribir el método heredado de Object
+* - Obtener y cambiar el color
+* - Mover la forma (o sea, su centro)
+*
+* Defina una subclase Rectángulo que herede de Figura y tenga los siguientes atributos:
+* - Lado menor.
+* - Lado mayor.
+*
+* Y, al menos, los siguientes métodos:
+* - toString. Debe retornar un string mostrando que se trata de un rectángulo, su nombre, color, centro y lado. Debería usarse la función toString de la clase base   para realizar parte de este trabajo.
+* - Calcular el área (lado menor * lado mayor).
+* - Calcular el perímetro. (2 * lado menor + 2 * lado mayor).
+* - Cambiar el tamaño del rectángulo. Recibe como parámetro un factor de escala. Así, por
+* ejemplo, si el factor vale 2, el rectángulo duplicará su tamaño y si es 0,5 se reducirá a la mitad. Qué pasaría o cómo deberían manejar un factor de escala negativo o cero?
  */
 
 public class main {
@@ -90,6 +87,7 @@ public class main {
         }
     }
 
+    //*Herencia de la figura */
     public class Rectangulo extends Figura {
 
         public Rectangulo(String color, Punto centro, String nombre, double ladoMenor, double ladoMayor) {
@@ -155,9 +153,9 @@ public class main {
         Rectangulo rectangulo = new main().new Rectangulo("Azul", centro, "Rectangulo", 4, 6);
         System.out.println("------------------------------------------------------------------");
         System.out.println(negrita + azul + "Caracteristicas de la figura" + reset);
-        System.out.println("-   " + negrita + Amarillo + "Color: " + reset + rectangulo.getColor());
-        System.out.println("-   " + negrita + Amarillo + "Centro: " + reset + rectangulo.centro.toString());
         System.out.println("-   " + negrita + Amarillo + "Nombre: " + reset + rectangulo.nombre);
+        System.out.println("-   " + negrita + Amarillo + "Centro: " + reset + rectangulo.centro.toString());
+        System.out.println("-   " + negrita + Amarillo + "Color: " + reset + rectangulo.getColor());
         System.out.println("-   " + negrita + Amarillo + "Lado Menor: " + reset + rectangulo.Get_Lado_Menor());
         System.out.println("-   " + negrita + Amarillo + "Lado Mayor: " + reset + rectangulo.Get_Lado_Mayor());
 
@@ -168,6 +166,12 @@ public class main {
 
         System.out.println("------------------------------------------------------------------");
         rectangulo.cambiarTamaño(2);
-        System.out.println("Después de cambiar tamaño: " + rectangulo.toString());
+        System.out.println(negrita + azul + "Después de cambiar tamaño: ");
+        System.out.println("-   " + negrita + Amarillo + "Nombre: " + reset + rectangulo.nombre);
+        System.out.println("-   " + negrita + Amarillo + "Centro: " + reset + rectangulo.centro.toString());
+        System.out.println("-   " + negrita + Amarillo + "Color: " + reset + rectangulo.getColor());
+        System.out.println("-   " + negrita + Amarillo + "Lado Menor: " + reset + rectangulo.Get_Lado_Menor());
+        System.out.println("-   " + negrita + Amarillo + "Lado Mayor: " + reset + rectangulo.Get_Lado_Mayor());
+        System.out.println("------------------------------------------------------------------");
     }
 }
