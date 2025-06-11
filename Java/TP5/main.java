@@ -164,14 +164,16 @@ public class main {
         System.out.println("-   " + negrita + Amarillo + "Area: " + reset + rectangulo.Area());
         System.out.println("-   " + negrita + Amarillo + "Perímetro: " + reset + rectangulo.Perimetro());
 
-        System.out.println("------------------------------------------------------------------");
         rectangulo.cambiarTamaño(2);
+        System.out.println("------------------------------------------------------------------");
         System.out.println(negrita + azul + "Después de cambiar tamaño: ");
-        System.out.println("-   " + negrita + Amarillo + "Nombre: " + reset + rectangulo.nombre);
-        System.out.println("-   " + negrita + Amarillo + "Centro: " + reset + rectangulo.centro.toString());
-        System.out.println("-   " + negrita + Amarillo + "Color: " + reset + rectangulo.getColor());
         System.out.println("-   " + negrita + Amarillo + "Lado Menor: " + reset + rectangulo.Get_Lado_Menor());
         System.out.println("-   " + negrita + Amarillo + "Lado Mayor: " + reset + rectangulo.Get_Lado_Mayor());
+
+        System.out.println("------------------------------------------------------------------");
+        System.out.println(negrita + azul + "Datos del rectángulo:" + reset);
+        System.out.println("-   " + negrita + Amarillo + "Area: " + reset + rectangulo.Area());
+        System.out.println("-   " + negrita + Amarillo + "Perímetro: " + reset + rectangulo.Perimetro());
         System.out.println("------------------------------------------------------------------");
     }
 }
