@@ -1,20 +1,20 @@
 
 
 /*
-* 1. . Defina una clase Figura que tenga los siguientes atributos:
+* 1.    Defina una clase Figura que tenga los siguientes atributos:
 * - Color
 * - Coordenada del centro de la forma (Defina una clase Punto con atributos coordenadaX y coordenadaY)
 * - Nombre de la forma
-*
+
 * Y, al menos, los siguientes métodos:
 * - toString. Sobrescribir el método heredado de Object
 * - Obtener y cambiar el color
 * - Mover la forma (o sea, su centro)
-*
+
 * Defina una subclase Rectángulo que herede de Figura y tenga los siguientes atributos:
 * - Lado menor.
 * - Lado mayor.
-*
+
 * Y, al menos, los siguientes métodos:
 * - toString. Debe retornar un string mostrando que se trata de un rectángulo, su nombre, color, centro y lado. Debería usarse la función toString de la clase base   para realizar parte de este trabajo.
 * - Calcular el área (lado menor * lado mayor).
@@ -27,6 +27,10 @@
 * c) Defina una clase Cuadrado que herede de la clase Rectángulo. ¿Cómo debería ser el constructor de Cuadrado? Si Rectángulo tuviera métodos como setLadoMenor() y setLadoMayor(), ¿Cómo debería Cuadrado sobrescribirlos para mantener la integridad de un cuadrado (donde ambos lados deben ser iguales)?
 * d) Defina una clase Circulo que herede de la clase Elipse. ¿Cómo sería su constructor y cómo se relaciona con el de Elipse? (Radio mayor = Radio menor).
 * e) Realice un programa que defina varias figuras diferentes, cree una collection de objetos de la clase Figura. El programa debe realizar un bucle que recorra todas las figuras, las ponga todas del mismo color y las mueva a una determinada posición.
+* f) Analice qué ocurre en el ejercicio anterior si se intenta imprimir la información de cada figura (llamando al método toString) y qué sucede si se intenta obtener en ese bucle el área y perímetro de todas las figuras de la collection.
+* g) Utilice la técnica de polimorfismo para arreglar los comportamientos anómalos detectados en el paso anterior.
+* h) ¿Cómo haría para obligar que todas las clases futuras que hereden de Figura tengan al menos los métodos “área” y “perímetro”. ¿Tiene sentido incluir definir dichos métodos en la clase Figura?
+* i) Haga un diagrama de clases que refleja la estructura definida hasta el momento. Añádale las clases: Punto, Línea, Triángulo, Triángulo Rectángulo y
  */
 import java.util.*;
 
@@ -81,10 +85,12 @@ abstract class Figura {
         this.nombre = nombre;
     }
 
+    //GETTER
     public String getColor() {
         return color;
     }
 
+    //SETTER
     public void setColor(String color) {
         this.color = color;
     }
@@ -327,7 +333,7 @@ public class main {
             System.out.println(GREEN + "------------------------------------" + RESET);
         }
 
-        // Cambiar color y mover
+        // Punto e
         String nuevoColor = "Magenta";
         int dx = 10, dy = -5;
         for (Figura f : figuras) {
@@ -365,6 +371,11 @@ public class main {
             System.out.println(CYAN + "-   Área: " + RESET + f.area());
             System.out.println(CYAN + "-   Perímetro: " + RESET + f.perimetro());
             System.out.println(GREEN + "------------------------------------" + RESET);
+
+            //* Punto h
+            //* Para obligar a que todas las clases futuras que hereden de Figura tengan los métodos "área" y "perímetro", se pueden definir estos métodos como abstractos en la clase Figura.
+            //* Esto tiene sentido, ya que todas las figuras geométricas tienen un área y un perímetro, y es lógico que estas operaciones sean parte de la interfaz de la clase Figura.
+            //* Al definirlos como abstractos, se fuerza a las subclases a implementar estos métodos, garantizando que todas las figuras tendrán una forma de calcular su área y perímetro.
         }
     }
 }
