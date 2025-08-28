@@ -17,7 +17,7 @@ public class MultiplicacionMatricesExecutor {
     public static final String ANSI_GREEN = "\u001B[32m";
 
     public static void main(String[] args) {
-        final int Tamano_matriz = 5;        //!NO ZARPARSE, CASI SE ME EXPLOTA LA PC :(
+        final int Tamano_matriz = 10;        //!NO ZARPARSE, CASI SE ME EXPLOTA LA PC :(
         Random random = new Random();       //Usamos el random para rellenar las matrices :)
 
         // Crear y rellenar matrices con valores aleatorios
@@ -27,6 +27,7 @@ public class MultiplicacionMatricesExecutor {
         fillRandomMatrix(matrizA, random);
         fillRandomMatrix(matrizB, random);
 
+        System.out.println("|---------------------------------------------------------------|");
         System.out.println("Matrices A y B de " + Tamano_matriz + "x" + Tamano_matriz + " generadas con valores aleatorios.");
 
         if (matrizA[0].length != matrizB.length) {
@@ -81,12 +82,12 @@ public class MultiplicacionMatricesExecutor {
     }
 
     /**
-     * Rellena una matriz dada con números enteros aleatorios entre 0 y 99.
+     * Rellena una matriz dada con números enteros aleatorios entre 0 y 50
      */
     private static void fillRandomMatrix(int[][] matrix, Random random) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = random.nextInt(100); // Números aleatorios entre 0 y 99
+        for (int[] matrix1 : matrix) {
+            for (int j = 0; j < matrix1.length; j++) {
+                matrix1[j] = random.nextInt(51); // Números aleatorios entre 0 y 50
             }
         }
     }

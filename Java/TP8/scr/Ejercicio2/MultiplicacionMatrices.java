@@ -17,9 +17,9 @@ public class MultiplicacionMatrices {
     public static void main(String[] args) {
         // Definimos las matrices
         int[][] matrizA = {
-            {60, 25, 37},
+            {5, 25, 37},
             {42, 53, -61},
-            {71, 18, 92}
+            {71, 18, 0}
         };
 
         int[][] matrizB = {
@@ -46,8 +46,8 @@ public class MultiplicacionMatrices {
 
         //* División del Problema y Paso de Parámetros
         // Iteramos sobre cada celda de la matriz resultado para crear una tarea por cada una.
-        for (int i = 0; i < filasResultado; i++) {
-            for (int j = 0; j < columnasResultado; j++) {
+        for (int i = 0; i < filasResultado; i++) {          // Recorremos las filas de la matriz A
+            for (int j = 0; j < columnasResultado; j++) {   // Recorremos las columnas de la matriz B
                 // Creamos la tarea específica para la celda (i, j)
                 TareaMultiplicacion tarea = new TareaMultiplicacion(matrizA, matrizB, matrizResultado, i, j);
 
