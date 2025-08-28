@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "Java/TP7/Parteuno",
+        "Java/TP7/1raParte",
+        "Java/TP8"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}
