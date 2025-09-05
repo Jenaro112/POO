@@ -46,8 +46,8 @@ public class MultiplicacionMatrices {
 
         //* División del Problema y Paso de Parámetros
         // Iteramos sobre cada celda de la matriz resultado para crear una tarea por cada una.
-        for (int i = 0; i < filasResultado; i++) {          // Recorremos las filas de la matriz A
-            for (int j = 0; j < columnasResultado; j++) {   // Recorremos las columnas de la matriz B
+        for (int i = 0; i < filasResultado; i++) {          // Recorremos las filas de la matriz A      I = fila
+            for (int j = 0; j < columnasResultado; j++) {   // Recorremos las columnas de la matriz B   J = columna
                 // Creamos la tarea específica para la celda (i, j)
                 TareaMultiplicacion tarea = new TareaMultiplicacion(matrizA, matrizB, matrizResultado, i, j);
 
@@ -64,16 +64,16 @@ public class MultiplicacionMatrices {
         // Esperamos a que todos los hilos terminen su trabajo.
         for (Thread hilo : hilos) {
             try {
-                hilo.join();        // El método join() bloquea la ejecución del hilo principal (main) hasta que el hilo sobre el que se llama haya terminado.
+                hilo.join();                // El método join() bloquea la ejecución del hilo principal (main) hasta que el hilo sobre el que se llama haya terminado.
             } catch (InterruptedException e) {
                 System.err.println("El hilo principal fue interrumpido: " + e.getMessage());
                 Thread.currentThread().interrupt();
             }
         }
-
-        System.out.println(ANSI_GREEN + "\nTodos los hilos han terminado. La multiplicación está completa." + ANSI_RESET);
-
-        System.out.println("\nMatriz Resultado (A * B):");
+        System.out.println();
+        System.out.println(ANSI_GREEN + "Todos los hilos han terminado. La multiplicación está completa." + ANSI_RESET);
+        System.out.println();
+        System.out.println("Matriz Resultado (A * B):");
         imprimirMatriz(matrizResultado);
     }
 

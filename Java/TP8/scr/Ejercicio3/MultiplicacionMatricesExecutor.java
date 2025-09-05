@@ -11,14 +11,14 @@ import scr.Ejercicio2.TareaMultiplicacion;
 
 public class MultiplicacionMatricesExecutor {
 
-    // Constantes para colores ANSI
+    // Colores
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
     public static void main(String[] args) {
-        final int Tamano_matriz = 10;        //!NO ZARPARSE, CASI SE ME EXPLOTA LA PC :(
-        Random random = new Random();       //Usamos el random para rellenar las matrices :)
+        final int Tamano_matriz = 10;           //!NO ZARPARSE, CASI SE ME EXPLOTA LA PC :(
+        Random random = new Random();           //Usamos el random para rellenar las matrices :)
 
         // Crear y rellenar matrices con valores aleatorios
         int[][] matrizA = new int[Tamano_matriz][Tamano_matriz];
@@ -31,7 +31,7 @@ public class MultiplicacionMatricesExecutor {
         System.out.println("Matrices A y B de " + Tamano_matriz + "x" + Tamano_matriz + " generadas con valores aleatorios.");
 
         if (matrizA[0].length != matrizB.length) {
-            System.out.println("Dimensiones no compatibles.");
+            System.out.println("Dimensiones no compatibles.");                      // No se pueden multiplicar
             return;
         }
 
@@ -39,27 +39,27 @@ public class MultiplicacionMatricesExecutor {
         int columnasResultado = matrizB[0].length;
         int[][] matrizResultado = new int[filasResultado][columnasResultado];
 
-        // 1. Crear el ExecutorService con un número de hilos igual al de procesadores disponibles
+        //? 1. Crear el ExecutorService con un número de hilos igual al de procesadores disponibles
         int numProcesadores = Runtime.getRuntime().availableProcessors();
         ExecutorService executor = Executors.newFixedThreadPool(numProcesadores);
 
         System.out.println(ANSI_YELLOW + "Enviando " + (filasResultado * columnasResultado) + " tareas a un pool de " + numProcesadores + " hilos..." + ANSI_RESET);
 
-        // 2. Enviar las Tareas al pool
+        //? 2. Enviar las Tareas al pool
         for (int i = 0; i < filasResultado; i++) {
             for (int j = 0; j < columnasResultado; j++) {
                 TareaMultiplicacion tarea = new TareaMultiplicacion(matrizA, matrizB, matrizResultado, i, j);
-                executor.submit(tarea);
+                executor.submit(tarea);             // Enviamos la tarea al executor para que la ejecute cuando un hilo esté libre
             }
         }
 
-        // 3. Manejar el Apagado del Executor
+        //? 3. Manejar el Apagado del Executor
         executor.shutdown(); // No acepta más tareas, pero termina las que están en cola.
         try {
             // Espera a que todas las tareas terminen, con un tiempo de espera máximo.
-            if (!executor.awaitTermination(5, TimeUnit.MINUTES)) {
+            if (!executor.awaitTermination(120, TimeUnit.SECONDS)) {  //! Revisar, creo que no funciona
                 System.err.println("Las tareas no terminaron en el tiempo esperado. Forzando apagado.");
-                executor.shutdownNow(); // Intenta detener las tareas en ejecución.
+                executor.shutdownNow();                                     // Intenta detener las tareas en ejecución.
             }
         } catch (InterruptedException e) {
             System.err.println("El hilo principal fue interrumpido mientras esperaba. Forzando apagado.");
@@ -67,8 +67,10 @@ public class MultiplicacionMatricesExecutor {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println(ANSI_GREEN + "\nTodas las tareas han finalizado. La multiplicación está completa." + ANSI_RESET);
-        System.out.println("\nMatriz Resultado (A * B):");
+        System.out.println();
+        System.out.println(ANSI_GREEN + "Todas las tareas han finalizado. La multiplicación está completa." + ANSI_RESET);
+        System.out.println("Matriz Resultado (A * B):");
+        System.out.println();
         imprimirMatriz(matrizResultado);
     }
 
@@ -81,13 +83,10 @@ public class MultiplicacionMatricesExecutor {
         }
     }
 
-    /**
-     * Rellena una matriz dada con números enteros aleatorios entre 0 y 50
-     */
     private static void fillRandomMatrix(int[][] matrix, Random random) {
         for (int[] matrix1 : matrix) {
             for (int j = 0; j < matrix1.length; j++) {
-                matrix1[j] = random.nextInt(51); // Números aleatorios entre 0 y 50
+                matrix1[j] = random.nextInt(51);
             }
         }
     }
