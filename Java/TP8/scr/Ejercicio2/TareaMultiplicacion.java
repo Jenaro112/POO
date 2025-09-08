@@ -1,9 +1,6 @@
 package scr.Ejercicio2;
 
 //|---------------------------------------------------------------|
-
-import java.awt.SystemColor;
-
 //|                       Ejercicio Dos                           |
 //|---------------------------------------------------------------|
 public class TareaMultiplicacion implements Runnable { //Que sea runnable significa que se puede ejecutar en un hilo

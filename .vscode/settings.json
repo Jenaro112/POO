@@ -1,8 +1,9 @@
 {
     "java.project.sourcePaths": [
+        "Java/TP8",
         "Java/TP7/Parteuno",
-        "Java/TP7/1raParte",
-        "Java/TP8"
+        "Java/TP9"
     ],
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.referencedLibraries": []
 }
